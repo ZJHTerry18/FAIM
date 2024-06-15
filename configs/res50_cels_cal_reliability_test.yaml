@@ -41,7 +41,7 @@ TRAIN:
     WARMUP_EPOCH: 0
     STEPSIZE: [20, 40]
 TEST:
-  VISUALIZE: True
+  VISUALIZE: False
   RERANKING: 1
 OUTPUT: /data/zhaojiahe/results/ccreid/logs
     
