@@ -1,0 +1,18 @@
+MODEL:
+  NAME: swint
+  FEATURE_DIM: 2048
+  CA_DIM: 1024
+  POOLING:
+    NAME: maxavg
+    P: 3
+LOSS:
+  CLA_LOSS: crossentropylabelsmooth
+  CAL: cal
+TRAIN:
+  MAX_EPOCH: 60
+  OPTIMIZER:
+    NAME: sgd
+    LR: 0.0035
+    WEIGHT_DECAY: 5e-4
+  LR_SCHEDULER:
+    STEPSIZE: [40]

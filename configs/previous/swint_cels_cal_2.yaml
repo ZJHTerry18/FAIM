@@ -1,0 +1,32 @@
+MODEL:
+  NAME: swint
+  FEATURE_DIM: 1024
+  CA_DIM: 512
+  POOLING:
+    NAME: avg
+    P: 3
+  USE_OLD_FEATURE: True
+  PATCH_SHUFFLE: True
+  DECOUPLE: True
+  SIM: False
+DATA:
+  HEIGHT: 384
+  WIDTH: 192
+LOSS:
+  CLA_LOSS: crossentropylabelsmooth
+  CLOTHES_CLA_LOSS: crossentropy
+  CAL: cal
+  CLA_LOSS_WEIGHT: 1.0
+  ID_LOSS_WEIGHT: 0.5
+  CLO_LOSS_WEIGHT: 0.5
+  SIM_LOSS_WEIGHT: 0.0
+TRAIN:
+  MAX_EPOCH: 100
+  OPTIMIZER:
+    NAME: sgd
+    LR: 0.0035
+    WEIGHT_DECAY: 5e-4
+  LR_SCHEDULER:
+    NAME: warmup
+    WARMUP_EPOCH: 0
+    STEPSIZE: [40]

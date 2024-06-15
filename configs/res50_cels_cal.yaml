@@ -1,0 +1,42 @@
+MODEL:
+  NAME: resnet50
+  RES4_STRIDE: 1
+  FEATURE_DIM: 4096
+  CA_DIM: 2048
+  POOLING:
+    NAME: maxavg
+    P: 3
+  USE_OLD_FEATURE: False
+  PATCH_SHUFFLE: False
+  DECOUPLE: False
+  NUM_DECOUPLE_BLOCKS: 2
+  SIM: False
+  ERASE_LAYER: none
+DATA:
+  ROOT: /public/zhaojiahe/datasets
+  HEIGHT: 384
+  WIDTH: 192
+AUG:
+  PIXEL_SAMPLING: False
+LOSS:
+  CLA_LOSS: crossentropylabelsmooth
+  CLOTHES_CLA_LOSS: crossentropy
+  CAL: cal
+  CLA_LOSS_WEIGHT: 1.0
+  PAIR_LOSS_WEIGHT: 1.0
+  ID_LOSS_WEIGHT: 0.0
+  CLO_LOSS_WEIGHT: 0.0
+  SIM_LOSS_WEIGHT: 0.0
+TRAIN:
+  MAX_EPOCH: 60
+  OPTIMIZER:
+    NAME: adam
+    LR: 0.00035
+    WEIGHT_DECAY: 5e-4
+  LR_SCHEDULER:
+    NAME: warmup
+    WARMUP_EPOCH: 0
+    STEPSIZE: [20, 40]
+OUTPUT: /public/zhaojiahe/results/ccreid/logs
+    
+# TAG: res50-cels-cal
